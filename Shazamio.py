@@ -95,10 +95,6 @@ class Shazamio(loader.Module):
             )
             await proc.communicate()
 
-            if not os.path.exists(audio_path) or os.path.getsize(audio_path) == 0:
-                await utils.answer(message, self.strings("ffmpeg_error"))
-                return
-
             await utils.answer(message, self.strings("shazaming"))
             shazam = Shazam()
             result = await shazam.recognize(audio_path)
